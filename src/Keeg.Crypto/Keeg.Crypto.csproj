@@ -55,6 +55,8 @@
     <Compile Include="Hashing\NonCryptographic\Fnv164.cs" />
     <Compile Include="Hashing\NonCryptographic\Fnv1a32.cs" />
     <Compile Include="Hashing\NonCryptographic\Fnv1a64.cs" />
+    <Compile Include="Hashing\NonCryptographic\Joaat.cs" />
+    <Compile Include="Hashing\NonCryptographic\Js.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
