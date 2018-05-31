@@ -51,6 +51,10 @@
     <Compile Include="Hashing\NonCryptographic\Dek.cs" />
     <Compile Include="Hashing\NonCryptographic\Djb2.cs" />
     <Compile Include="Hashing\NonCryptographic\Elf.cs" />
+    <Compile Include="Hashing\NonCryptographic\Fnv132.cs" />
+    <Compile Include="Hashing\NonCryptographic\Fnv164.cs" />
+    <Compile Include="Hashing\NonCryptographic\Fnv1a32.cs" />
+    <Compile Include="Hashing\NonCryptographic\Fnv1a64.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
