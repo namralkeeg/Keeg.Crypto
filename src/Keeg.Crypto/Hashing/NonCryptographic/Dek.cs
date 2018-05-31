@@ -27,47 +27,34 @@ using System.Security.Cryptography;
 namespace Keeg.Crypto.Hashing.NonCryptographic
 {
     /// <summary>
-    /// Hashing algorithm by Arash Partow
+    /// An algorithm proposed by Donald E. Knuth in The Art Of Computer Programming Volume 3.
     /// </summary>
-    public sealed class APHash : HashAlgorithm
+    public sealed class Dek : HashAlgorithm
     {
-        #region Instance Fields
-        private const uint seed = 0xAAAAAAAAu;
         private uint hash;
-        #endregion
+        private const uint seed = 0;
 
-        public APHash()
+        public Dek()
         {
-            HashSizeValue = 32;
+            HashSizeValue = sizeof(uint) * 8;
             Initialize();
-        }
-
-        new static public APHash Create()
-        {
-            return Create(typeof(APHash).Name);
-        }
-
-        new static public APHash Create(string hashName)
-        {
-            return (APHash)HashAlgorithmFactory.Create(hashName);
         }
 
         public override void Initialize()
         {
             hash = seed;
-            if ((HashValue != null) && (HashValue.Length > 0))
-            {
-                Array.Clear(HashValue, 0, HashValue.Length);
-                HashValue = null;
-            }
         }
 
         protected override void HashCore(byte[] array, int ibStart, int cbSize)
         {
+            if (hash == 0)
+            {
+                hash = (uint)cbSize;
+            }
+
             for (var i = ibStart; i < ibStart + cbSize; i++)
             {
-                hash ^= ((i & 0x01) == 0) ? ((hash << 7) ^ array[i] ^ (hash >> 3)) :
-                                            (~((hash << 11) ^ array[i] ^ (hash >> 5)));
+                hash = ((hash << 5) ^ (hash >> 27)) ^ array[i];
             }
         }
 
