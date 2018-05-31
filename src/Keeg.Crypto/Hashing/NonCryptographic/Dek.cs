@@ -36,8 +36,18 @@ namespace Keeg.Crypto.Hashing.NonCryptographic
 
         public Dek()
         {
-            HashSizeValue = sizeof(uint) * 8;
+            HashSizeValue = 32;
             Initialize();
+        }
+
+        new static public Dek Create()
+        {
+            return Create(typeof(Dek).Name);
+        }
+
+        new static public Dek Create(string hashName)
+        {
+            return (Dek)HashAlgorithmFactory.Create(hashName);
         }
 
         public override void Initialize()

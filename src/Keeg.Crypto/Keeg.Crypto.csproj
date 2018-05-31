@@ -49,6 +49,7 @@
     <Compile Include="Hashing\NonCryptographic\APHash.cs" />
     <Compile Include="Hashing\NonCryptographic\Bkdr.cs" />
     <Compile Include="Hashing\NonCryptographic\Dek.cs" />
+    <Compile Include="Hashing\NonCryptographic\Djb2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
