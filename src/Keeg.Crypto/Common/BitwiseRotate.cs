@@ -34,7 +34,7 @@ namespace Keeg.Crypto.Common
             return (value << count) | (value >> (32 - count));
         }
 
-        internal static int RotateLeft(this int value, int count)
+        internal static int Rol(this int value, int count)
         {
             return (int)(((uint)value).Rol(count));
         }
