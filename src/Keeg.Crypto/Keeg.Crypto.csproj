@@ -45,11 +45,12 @@
   <ItemGroup>
     <Compile Include="Common\BitwiseRotate.cs" />
     <Compile Include="Common\Utils.cs" />
+    <Compile Include="Hashing\HashAlgorithmFactory.cs" />
+    <Compile Include="Hashing\NonCryptographic\APHash.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Encryption\" />
-    <Folder Include="Hashing\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
