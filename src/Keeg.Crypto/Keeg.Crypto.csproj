@@ -47,6 +47,7 @@
     <Compile Include="Common\Utils.cs" />
     <Compile Include="Hashing\HashAlgorithmFactory.cs" />
     <Compile Include="Hashing\NonCryptographic\APHash.cs" />
+    <Compile Include="Hashing\NonCryptographic\Bkdr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
