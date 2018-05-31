@@ -50,6 +50,7 @@
     <Compile Include="Hashing\NonCryptographic\Bkdr.cs" />
     <Compile Include="Hashing\NonCryptographic\Dek.cs" />
     <Compile Include="Hashing\NonCryptographic\Djb2.cs" />
+    <Compile Include="Hashing\NonCryptographic\Elf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -27,44 +27,48 @@ using System.Security.Cryptography;
 namespace Keeg.Crypto.Hashing.NonCryptographic
 {
     /// <summary>
-    /// An algorithm produced by Professor Daniel J. Bernstein.
-    /// Originally introduced on the usenet newsgroup comp.lang.c.
+    /// Similar to the PJW Hash function, but tweaked for 32-bit processors. 
+    /// A widley used hash function on UNIX based systems.
     /// </summary>
-    public sealed class Djb2 : HashAlgorithm
+    public sealed class Elf : HashAlgorithm
     {
-        private const uint DefaultSeed = 5381u;
-        private uint seed;
         private uint hash;
+        private const uint seed = 0;
 
-        public Djb2()
+        public Elf()
         {
             HashSizeValue = 32;
-            Seed = DefaultSeed;
             Initialize();
         }
 
-        new static public Djb2 Create()
+        new static public Elf Create()
         {
-            return Create(typeof(Djb2).Name);
+            return Create(typeof(Elf).Name);
         }
 
-        new static public Djb2 Create(string hashName)
+        new static public Elf Create(string hashName)
         {
-            return (Djb2)HashAlgorithmFactory.Create(hashName);
+            return (Elf)HashAlgorithmFactory.Create(hashName);
         }
-
-        public uint Seed { get => seed; set => seed = value; }
 
         public override void Initialize()
         {
-            hash = Seed;
+            hash = seed;
         }
 
         protected override void HashCore(byte[] array, int ibStart, int cbSize)
         {
+            uint high = 0u;
             for (var i = ibStart; i < ibStart + cbSize; i++)
             {
-                hash = ((hash << 5) + hash) + array[i]; /* hash * 33 + c */
+                hash = (hash << 4) + array[i];
+                high = hash & 0xF0000000u;
+                if (high != 0)
+                {
+                    hash ^= high >> 24;
+                }
+
+                hash &= ~high;
             }
         }
 
