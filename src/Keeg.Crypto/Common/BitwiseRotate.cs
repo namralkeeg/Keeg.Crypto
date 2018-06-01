@@ -14,7 +14,7 @@ namespace Keeg.Crypto.Common
             return (byte)((value << count) | (value >> (8 - count)));
         }
 
-        internal static sbyte RotateLeft(this sbyte value, int count)
+        internal static sbyte Rol(this sbyte value, int count)
         {
             return (sbyte)Rol((byte)value, count);
         }
