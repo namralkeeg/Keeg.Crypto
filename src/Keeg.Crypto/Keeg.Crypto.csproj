@@ -60,6 +60,7 @@
     <Compile Include="Hashing\NonCryptographic\Pjw.cs" />
     <Compile Include="Hashing\NonCryptographic\Rs.cs" />
     <Compile Include="Hashing\NonCryptographic\Sax.cs" />
+    <Compile Include="Hashing\NonCryptographic\Sdbm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
