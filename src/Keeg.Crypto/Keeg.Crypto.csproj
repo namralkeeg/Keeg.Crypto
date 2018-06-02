@@ -46,8 +46,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\BitConverterEndian.cs" />
+    <Compile Include="Common\BitSize.cs" />
     <Compile Include="Common\BitwiseRotate.cs" />
     <Compile Include="Common\Utils.cs" />
+    <Compile Include="Hashing\Checksum\Adler32.cs" />
+    <Compile Include="Hashing\Checksum\Fletcher.cs" />
     <Compile Include="Hashing\HashAlgorithmFactory.cs" />
     <Compile Include="Hashing\NonCryptographic\APHash.cs" />
     <Compile Include="Hashing\NonCryptographic\Bkdr.cs" />
