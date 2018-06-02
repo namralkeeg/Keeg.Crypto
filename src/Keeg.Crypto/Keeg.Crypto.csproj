@@ -22,6 +22,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <LangVersion>7.2</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,6 +32,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <LangVersion>7.2</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -43,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\BitConverterEndian.cs" />
     <Compile Include="Common\BitwiseRotate.cs" />
     <Compile Include="Common\Utils.cs" />
     <Compile Include="Hashing\HashAlgorithmFactory.cs" />
@@ -63,6 +66,7 @@
     <Compile Include="Hashing\NonCryptographic\Sdbm.cs" />
     <Compile Include="Hashing\NonCryptographic\SuperFast.cs" />
     <Compile Include="Hashing\NonCryptographic\XxHash32.cs" />
+    <Compile Include="Hashing\NonCryptographic\XxHash64.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

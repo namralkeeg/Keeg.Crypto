@@ -28,7 +28,7 @@ using Keeg.Crypto.Common;
 namespace Keeg.Crypto.Hashing.NonCryptographic
 {
     /// <summary>
-    /// Algorithm by Yann Collet
+    /// XXHash (32 bit), based on Yann Collet's descriptions, see http://cyan4973.github.io/xxHash/
     /// </summary>
     public sealed class XxHash32 : HashAlgorithm
     {
@@ -70,17 +70,6 @@ namespace Keeg.Crypto.Hashing.NonCryptographic
         }
 
         public uint Seed { get => seed; set => seed = value; }
-
-        /// <summary>
-        /// Converts an array of bytes in Little-Endian format to an <see cref="uint"/> at a given position.
-        /// </summary>
-        /// <param name="array">Array containing the bytes to convert.</param>
-        /// <param name="pos">Position in the arry to start the conversion.</param>
-        /// <returns>A Little-Endian 32 bit unsigned integer.</returns>
-        private uint Get32BitsLE(byte[] array, int pos)
-        {
-            return (uint)(array[0] | (array[1] << 8) | (array[2] << 16) | (array[3] << 24));
-        }
 
         public override void Initialize()
         {
@@ -132,11 +121,18 @@ namespace Keeg.Crypto.Hashing.NonCryptographic
                     int tempBuffIndex;
                     for (i = 0, tempBuffIndex = 0; i < bufferSize && tempBuffIndex < 4; i += 4)
                     {
-                        tempBuff[tempBuffIndex++] = Get32BitsLE(buffer, (int)i);
+                        tempBuff[tempBuffIndex++] = BitConverterEndian.ToUInt32LE(buffer, (int)i);
                     }
 
                     // process these 16 bytes (4x4)
-                    Process(tempBuff, ref s0, ref s1, ref s2, ref s3);
+                    unchecked
+                    {
+                        s0 = (s0 + tempBuff[0] * Prime2).Rol(13) * Prime1;
+                        s1 = (s1 + tempBuff[1] * Prime2).Rol(13) * Prime1;
+                        s2 = (s2 + tempBuff[2] * Prime2).Rol(13) * Prime1;
+                        s3 = (s3 + tempBuff[3] * Prime2).Rol(13) * Prime1;
+                    }
+
                 }
 
                 // 16 bytes at once
@@ -145,12 +141,18 @@ namespace Keeg.Crypto.Hashing.NonCryptographic
                     // Calculations are all Little-Endian
                     for (i = 0; i < sizeof(uint); i++)
                     {
-                        tempBuff[i] = Get32BitsLE(array, current);
+                        tempBuff[i] = BitConverterEndian.ToUInt32LE(array, current);
                         current += sizeof(uint);
                     }
 
                     // local variables s0..s3 instead of state[0]..state[3] are much faster
-                    Process(tempBuff, ref s0, ref s1, ref s2, ref s3);
+                    unchecked
+                    {
+                        s0 = (s0 + tempBuff[0] * Prime2).Rol(13) * Prime1;
+                        s1 = (s1 + tempBuff[1] * Prime2).Rol(13) * Prime1;
+                        s2 = (s2 + tempBuff[2] * Prime2).Rol(13) * Prime1;
+                        s3 = (s3 + tempBuff[3] * Prime2).Rol(13) * Prime1;
+                    }
                 }
 
                 // copy back
@@ -184,7 +186,7 @@ namespace Keeg.Crypto.Hashing.NonCryptographic
             // at least 4 bytes left ? => eat 4 bytes per step
             while (currentByte + 4 <= bufferSize)
             {
-                result = (result + Get32BitsLE(buffer, (int)currentByte) * Prime3).Rol(17) * Prime4;
+                result = (result + BitConverterEndian.ToUInt32LE(buffer, (int)currentByte) * Prime3).Rol(17) * Prime4;
                 currentByte += 4;
             }
 
