@@ -48,6 +48,7 @@
     <Compile Include="Common\BitConverterEndian.cs" />
     <Compile Include="Common\BitSize.cs" />
     <Compile Include="Common\BitwiseRotate.cs" />
+    <Compile Include="Common\ByteSwap.cs" />
     <Compile Include="Common\Utils.cs" />
     <Compile Include="Hashing\Checksum\Adler32.cs" />
     <Compile Include="Hashing\Checksum\Fletcher.cs" />
@@ -74,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Encryption\" />
+    <Folder Include="Hashing\Crc\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
