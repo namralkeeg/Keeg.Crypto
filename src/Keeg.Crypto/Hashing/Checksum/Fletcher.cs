@@ -58,6 +58,16 @@ namespace Keeg.Crypto.Hashing.Checksum
             Initialize();
         }
 
+        public static new Fletcher Create()
+        {
+            return Create(typeof(Fletcher).Name);
+        }
+
+        public static new Fletcher Create(string hashName)
+        {
+            return (Fletcher)HashAlgorithmFactory.Create(hashName);
+        }
+
         public override void Initialize()
         {
             sum1 = 0;

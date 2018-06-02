@@ -59,6 +59,16 @@ namespace Keeg.Crypto.Hashing.NonCryptographic
             Initialize();
         }
 
+        public static new XxHash64 Create()
+        {
+            return Create(typeof(XxHash64).Name);
+        }
+
+        public static new XxHash64 Create(string hashName)
+        {
+            return (XxHash64)HashAlgorithmFactory.Create(hashName);
+        }
+
         public ulong Seed { get => seed; set => seed = value; }
 
         public override void Initialize()

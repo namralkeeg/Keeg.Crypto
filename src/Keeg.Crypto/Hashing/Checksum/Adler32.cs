@@ -42,6 +42,16 @@ namespace Keeg.Crypto.Hashing.Checksum
             Initialize();
         }
 
+        public static new Adler32 Create()
+        {
+            return Create(typeof(Adler32).Name);
+        }
+
+        public static new Adler32 Create(string hashName)
+        {
+            return (Adler32)HashAlgorithmFactory.Create(hashName);
+        }
+
         public override void Initialize()
         {
             hashA = 1;
