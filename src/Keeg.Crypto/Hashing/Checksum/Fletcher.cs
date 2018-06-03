@@ -46,6 +46,16 @@ namespace Keeg.Crypto.Hashing.Checksum
             get => bitSize;
             set
             {
+                switch (value)
+                {
+                    case BitSize.Bits16:
+                    case BitSize.Bits32:
+                    case BitSize.Bits64:
+                        bitSize = value;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(value));
+                }
                 bitSize = value;
                 bytesPerCycle = (int)bitSize / 16;
                 modValue = (ulong)(Math.Pow(2, 8 * bytesPerCycle) - 1);
