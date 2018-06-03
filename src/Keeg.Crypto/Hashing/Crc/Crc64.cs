@@ -69,6 +69,16 @@ namespace Keeg.Crypto.Hashing.Crc
             Initialize();
         }
 
+        public static new Crc64 Create()
+        {
+            return Create(typeof(Crc64).Name);
+        }
+
+        public static new Crc64 Create(string hashName)
+        {
+            return (Crc64)HashAlgorithmFactory.Create(hashName);
+        }
+
         public override void Initialize()
         {
             hash = seed;
