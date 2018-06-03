@@ -22,11 +22,7 @@
  */
 #endregion
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Keeg.Crypto.Common
 {
@@ -159,67 +155,6 @@ namespace Keeg.Crypto.Common
 
             return new string(c);
         }
-
-        //internal static ushort BytesToWordBE(byte[] data, int offset)
-        //{
-        //    return (ushort)
-        //        (
-        //        (data[offset] << 8) | 
-        //        (data[offset + 1])
-        //        );
-        //}
-
-        //internal static void WordToBytesBE(ushort word, byte[] data, int offset)
-        //{
-        //    data[offset    ] = (byte)((word >> 8) & 0xFFu);
-        //    data[offset + 1] = (byte)(word & 0xFFu);
-        //}
-
-        //internal static uint BytesToDWordBE(byte[] data, int offset)
-        //{
-        //    return (uint)
-        //        (
-        //        (data[offset] << 24) | 
-        //        (data[offset + 1] << 16) | 
-        //        (data[offset + 2] << 8) | 
-        //        (data[offset + 3])
-        //        );
-        //}
-
-        //internal static void DWordToBytesBE(uint dword, byte[] data, int offset)
-        //{
-        //    data[offset] = (byte)((dword >> 24) & 0xFF);
-        //    data[offset + 1] = (byte)((dword >> 16) & 0xFF);
-        //    data[offset + 2] = (byte)((dword >> 8) & 0xFF);
-        //    data[offset + 3] = (byte)(dword & 0xFF);
-        //}
-
-        //internal static ulong BytesToQuadWordBE(byte[] data, int offset = 0)
-        //{
-        //    return (ulong)
-        //        (
-        //        (data[offset] << 56) |
-        //        (data[offset + 1] << 48) |
-        //        (data[offset + 2] << 40) |
-        //        (data[offset + 3] << 32) |
-        //        (data[offset + 4] << 24) |
-        //        (data[offset + 5] << 16) |
-        //        (data[offset + 6] << 8) |
-        //        (data[offset + 7])
-        //        );
-        //}
-
-        //internal static void QuadWordToBytesBE(ulong qword, byte[] data, int offset = 0)
-        //{
-        //    data[offset] = (byte)((qword >> 56) & 0xFF);
-        //    data[offset + 1] = (byte)((qword >> 48) & 0xFF);
-        //    data[offset + 2] = (byte)((qword >> 40) & 0xFF);
-        //    data[offset + 3] = (byte)((qword >> 32) & 0xFF);
-        //    data[offset + 4] = (byte)((qword >> 24) & 0xFF);
-        //    data[offset + 5] = (byte)((qword >> 16) & 0xFF);
-        //    data[offset + 6] = (byte)((qword >> 08) & 0xFF);
-        //    data[offset + 7] = (byte)(qword & 0xFF);
-        //}
         #endregion
     }
 }
