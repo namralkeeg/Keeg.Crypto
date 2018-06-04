@@ -55,6 +55,7 @@
     <Compile Include="Hashing\Crc\Crc32.cs" />
     <Compile Include="Hashing\Crc\Crc64.cs" />
     <Compile Include="Hashing\Cryptographic\Keccak.cs" />
+    <Compile Include="Hashing\Cryptographic\MD5.cs" />
     <Compile Include="Hashing\Cryptographic\SHA3.cs" />
     <Compile Include="Hashing\HashAlgorithmFactory.cs" />
     <Compile Include="Hashing\NonCryptographic\APHash.cs" />
