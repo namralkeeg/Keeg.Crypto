@@ -27,7 +27,7 @@ using Keeg.Crypto.Common;
 
 namespace Keeg.Crypto.Hashing.Cryptographic
 {
-    public sealed class SHA3 : HashAlgorithm
+    public sealed class Keccak : HashAlgorithm
     {
         #region Constants
         /// 1600 bits, stored as 25x64 bit, BlockSize is no more than 1152 bits (Keccak224)
@@ -88,23 +88,23 @@ namespace Keeg.Crypto.Hashing.Cryptographic
         public override int OutputBlockSize => (int)blockSize;
         #endregion
 
-        public SHA3() : this(DefaultBitsize)
+        public Keccak() : this(DefaultBitsize)
         { }
 
-        public SHA3(BitSize bitSize)
+        public Keccak(BitSize bitSize)
         {
             Bits = bitSize;
             Initialize();
         }
 
-        public static new SHA3 Create()
+        public static new Keccak Create()
         {
-            return Create(typeof(SHA3).Name);
+            return Create(typeof(Keccak).Name);
         }
 
-        public static new SHA3 Create(string hashName)
+        public static new Keccak Create(string hashName)
         {
-            return (SHA3)HashAlgorithmFactory.Create(hashName);
+            return (Keccak)HashAlgorithmFactory.Create(hashName);
         }
 
         public override void Initialize()
@@ -230,30 +230,30 @@ namespace Keeg.Crypto.Hashing.Cryptographic
 
                 // Rho Pi
                 ulong last = hash[1];
-                one = hash[10]; hash[10] = last.Rol(1);  last = one;
-                one = hash[7];  hash[7]  = last.Rol(3);  last = one;
-                one = hash[11]; hash[11] = last.Rol(6);  last = one;
+                one = hash[10]; hash[10] = last.Rol(1); last = one;
+                one = hash[7]; hash[7] = last.Rol(3); last = one;
+                one = hash[11]; hash[11] = last.Rol(6); last = one;
                 one = hash[17]; hash[17] = last.Rol(10); last = one;
                 one = hash[18]; hash[18] = last.Rol(15); last = one;
-                one = hash[3];  hash[3]  = last.Rol(21); last = one;
-                one = hash[5];  hash[5]  = last.Rol(28); last = one;
+                one = hash[3]; hash[3] = last.Rol(21); last = one;
+                one = hash[5]; hash[5] = last.Rol(28); last = one;
                 one = hash[16]; hash[16] = last.Rol(36); last = one;
-                one = hash[8];  hash[8]  = last.Rol(45); last = one;
+                one = hash[8]; hash[8] = last.Rol(45); last = one;
                 one = hash[21]; hash[21] = last.Rol(55); last = one;
-                one = hash[24]; hash[24] = last.Rol(2);  last = one;
-                one = hash[4];  hash[4]  = last.Rol(14); last = one;
+                one = hash[24]; hash[24] = last.Rol(2); last = one;
+                one = hash[4]; hash[4] = last.Rol(14); last = one;
                 one = hash[15]; hash[15] = last.Rol(27); last = one;
                 one = hash[23]; hash[23] = last.Rol(41); last = one;
                 one = hash[19]; hash[19] = last.Rol(56); last = one;
-                one = hash[13]; hash[13] = last.Rol(8);  last = one;
+                one = hash[13]; hash[13] = last.Rol(8); last = one;
                 one = hash[12]; hash[12] = last.Rol(25); last = one;
-                one = hash[2];  hash[2]  = last.Rol(43); last = one;
+                one = hash[2]; hash[2] = last.Rol(43); last = one;
                 one = hash[20]; hash[20] = last.Rol(62); last = one;
                 one = hash[14]; hash[14] = last.Rol(18); last = one;
                 one = hash[22]; hash[22] = last.Rol(39); last = one;
-                one = hash[9];  hash[9]  = last.Rol(61); last = one;
-                one = hash[6];  hash[6]  = last.Rol(20); last = one;
-                                hash[1]  = last.Rol(44);
+                one = hash[9]; hash[9] = last.Rol(61); last = one;
+                one = hash[6]; hash[6] = last.Rol(20); last = one;
+                hash[1] = last.Rol(44);
 
                 ulong two;
                 // Chi
@@ -262,7 +262,7 @@ namespace Keeg.Crypto.Hashing.Cryptographic
                     // temporaries
                     one = hash[j];
                     two = hash[j + 1];
-                    
+
                     unchecked
                     {
                         hash[j] ^= hash[j + 2] & ~two;
@@ -282,9 +282,9 @@ namespace Keeg.Crypto.Hashing.Cryptographic
         {
             // add padding
             uint offset = bufferSize;
-            
+
             // add a "1" byte
-            buffer[offset++] = 0x06;
+            buffer[offset++] = 1;
 
             // fill with zeros
             while (offset < blockSize)
