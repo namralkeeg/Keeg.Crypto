@@ -29,6 +29,7 @@ namespace Keeg.Crypto.Common
         Bits32 = 32,
         Bits64 = 64,
         Bits128 = 128,
+        Bits160 = 160,
         Bits224 = 224,
         Bits256 = 256,
         Bits384 = 384,
