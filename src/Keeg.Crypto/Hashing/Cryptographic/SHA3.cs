@@ -111,6 +111,8 @@ namespace Keeg.Crypto.Hashing.Cryptographic
         {
             numBytes = 0;
             bufferSize = 0;
+            Array.Clear(hash, 0, hash.Length);
+            Array.Clear(buffer, 0, buffer.Length);
         }
 
         protected override void HashCore(byte[] array, int ibStart, int cbSize)

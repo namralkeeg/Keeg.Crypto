@@ -52,6 +52,8 @@ namespace Keeg.Crypto.Hashing.Cryptographic
         {
             m_numBytes = 0;
             m_bufferSize = 0;
+            Array.Clear(m_buffer, 0, m_buffer.Length);
+            Array.Clear(m_hash, 0, m_hash.Length);
 
             // according to RFC 1321
             m_hash[0] = 0x67452301u;
