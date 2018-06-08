@@ -50,6 +50,11 @@
     <Compile Include="Common\BitwiseRotate.cs" />
     <Compile Include="Common\ByteSwap.cs" />
     <Compile Include="Common\Utils.cs" />
+    <Compile Include="Encryption\CypherMode.cs" />
+    <Compile Include="Encryption\KeySizes.cs" />
+    <Compile Include="Encryption\PaddingMode.cs" />
+    <Compile Include="Encryption\SymmetricAlgorithm.cs" />
+    <Compile Include="Encryption\TransformMode.cs" />
     <Compile Include="Hashing\Checksum\Adler32.cs" />
     <Compile Include="Hashing\Checksum\Fletcher.cs" />
     <Compile Include="Hashing\Crc\Crc32.cs" />
@@ -80,8 +85,6 @@
     <Compile Include="Hashing\NonCryptographic\XxHash64.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Encryption\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

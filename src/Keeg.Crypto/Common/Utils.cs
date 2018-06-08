@@ -116,7 +116,7 @@ namespace Keeg.Crypto.Common
         {
             if ((hexString.Length & 1) != 0)
             {
-                throw new ArgumentException("Input must have even number of characters");
+                throw new ArgumentException("Input must have even number of characters", nameof(hexString));
             }
             int length = hexString.Length / 2;
             byte[] ret = new byte[length];
